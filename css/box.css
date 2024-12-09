@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+  }
+    
+  header {
+    border: 2px solid rgb(44, 44, 52);
+  }
+  
+  main {
+    border: 2px solid blueviolet;
+    padding: 2%;
+  }
+  
+  section {
+    border: 2px solid rgb(255, 255, 255);
+    padding: 25px 45px 25px;
+
+  }
+  
+  h1,h2 {
+    text-align: center;
+  }
+  
+  .container {
+    width:100%;
+    height: 400px;
+    padding: 20px;
+    border: 2px solid pink;
+    overflow: auto;
+  }
+  
+  .texto {
+    font-size: 1.6rem;
+  }
+  
+  .container_flex {
+    border: 1px solid black;
+    display: inline-flex;
+    width: 100%;
+    height: auto;
+  }
+  
+  .item_flex {
+    border: 1px solid goldenrod;
+    width: 50%;
+  }
