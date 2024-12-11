@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -13,8 +15,8 @@ body {
 }
 
 header {
-  background: rgb(2,244,249);
-  background: linear-gradient(90deg, rgba(2,244,249,1) 0%, rgba(2,42,61,1) 77%, rgba(0,0,0,1) 100%);
+  background: rgb(172,217,178);
+  background: linear-gradient(90deg, rgba(172,217,178,1) 0%, rgba(23,198,199,1) 77%, rgba(0,0,0,1) 100%);
   color: #ffffff;
   padding: 1em;
   text-align: center;
