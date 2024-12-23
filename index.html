@@ -1,100 +1,151 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patas y Bigotes</title>
     <link rel="shortcut icon" href="img/Logo_Pet_Shop-blanco.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/box.css">
+    <link rel="stylesheet" href="css/orden.css">
+    <script src="js/script.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLa1k9lIp2K5r9eD9fT7zU8fTxp8b6a9a5a5" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <nav>
-            <a class="navbar-logo" href="#">
-              <img src="img/Logo_Pet_Shop-removebg-preview.png">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">
+                <img class="navbar-logo" src="img/Logo_Pet_Shop-removebg-preview.png" alt="Logo">
             </a>
-            <a href="#productos">Productos</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#contacto">Contacto</a>
-            <a href="#">Noticias</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#curiosidades">Curiosidades</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
-    <section>
-      <h2>Todos para nuestros amigos peludos</h2>
-      <br>
-      <div class="producto">
-       <img src="img/PerroyGatoCariñosos.jpg">
-      </div>        
+    <section id="hero">
+      <h1>Foto de Gatitos para mejorar el dìa</h1>
+      <div class="hero-image">
+      <img src="https://api.thecatapi.com/v1/images/search?limit=1" class="d-block w-100" alt="Hero Image">
+      </div>
     </section>
-
-   </div>
+    <script>
+      fetch('https://api.thecatapi.com/v1/images/search?limit=1')
+        .then(response => response.json())
+        .then(data => {
+          const heroImage = document.querySelector('.hero-image img');
+          heroImage.src = data[0].url;
+        })
+        .catch(error => console.error('Error fetching the cat image:', error));
+    </script>
 
    <section id="productos">
-    <h2>Productos para Mascotas</h2>
-    <div class="productos">
-        <div class="producto">
-          <img src="img/Gatoenrascador.jpg"  width="150" height="100" alt="Camita para mascota">
-          <h3>Camita para Mascota</h3>
-            <p>Precio: $30.00</p>
-        </div>
-        <div class="producto">
-            <img src="img/PerroConJuguete.jpg" width="150" height="100" alt="Juguete de perro">
-            <h3>Juguete para Perro</h3>
-            <p>Precio: $10.00</p>
-        </div>
-        <div class="producto">
-            <img src="img/Gatoconrayas.jpg"  width="150" height="100" alt="Collar para gato">
-            <h3>Collar para Gato</h3>
-            <p>Precio: $15.00</p>
-        </div>
-    </div>
+    <div class="container">
+      <h1>Adquiere nuestros productos</h1>
+
+      <div class="products" id="product-list">
+        <!-- Productos cargados dinámicamente desde json -->
+      </div>
+
+      <div class="cart">
+          <h2>Carrito</h2>
+          <div id="cart-items"></div>
+          <div class="total" id="total"></div>
+          <form id="purchase-form" action="mailto:paolaboadaramos@gmail.com" method="post" enctype="text/plain">
+              <input type="hidden" id="cart-details" name="cart-details">
+              <button type="submit">Comprar</button>
+          </form>
+      </div>
+  </div>
+
+  </section>   
+    
+    <section id="curiosidades">
+      <div class="container">
+        <h2>Curiosidades </h2>
+        <p id="cat-fact">Cargando...</p>
     </section>
 
     <section id="nosotros">
       <div class="container">
         <h2>Sobre Nosotros</h2>
         <p class="texto">En <b>Patas y Bigotes</b>, nos dedicamos a brindar productos de alta calidad para el cuidado y entretenimiento de tus mascotas. Ofrecemos artículos únicos para asegurar la felicidad y el bienestar de tus amigos peludos.</p>
+        <h3>Nuestras redes</h3>
+        <div class="social-buttons">
+          <a href="https://www.facebook.com/GatitosyMas" class="social-button" target="_blank">
+            <img src="img/facebook-icon.png" alt="Facebook">
+          </a>
+          <a href="https://twitter.com" class="social-button" target="_blank">
+            <img src="img/twitter-icon.png" alt="Twitter">
+          </a>
+          <a href="https://instagram.com/gatitosymas" class="social-button" target="_blank">
+            <img src="img/instagram-icon.png" alt="Instagram">
+          </a>
+        </div>
       </div> 
       </section>
 
-    <footer id="contacto">
-        <h2>Contacto</h2>
+      <footer id="contacto">
         <div class="container_flex">
-          <a class="navbar-logo" href="#">
-            <img src="img/Logo_Pet_Shop-removebg-preview.png">
-          </a>
-          <div class="item_flex">
-            <p>Email: contacto@patas-y-bigotes.com</p>
-            <p>Teléfono: +123 456 7890</p>
-            <p>Dirección: Calle Ficticia 123, Ciudad, País</p>
-            <p>&copy; 2023 Patas y Bigotes</p>
-          </div>
-          <div class="item_flex">
-            <form  action="https://formspree.io/f/meoqkbwv"  method="POST">
-          <label>
-            <p>Ponte en contacto con nosotros</p>
-            <br>
-          Tu Correo electronico:
-            <input type="email" name="email">
-          </label>
-          <br>
-          <label>
-          Mensaje:
-            <textarea name="message"></textarea>
-          </label>
-          <br>
-          <button type="submit">Enviar</button>
+            <div class="item_flex">
+                <a class="navbar-logo" href="#">
+                    <img src="img/Logo_Pet_Shop-removebg-preview.png" alt="Logo">
+                </a>
+            </div>
+            <div class="item_flex">
+                <p>Email: contacto@patas-y-bigotes.com</p>
+                <a href="https://www.facebook.com/GatitosyMas">Facebook</a>
+                <p>Teléfono: +123 456 7890</p>
+                <p>Dirección: Calle Ficticia 123, Ciudad, País</p>
+                <p>&copy; 2024 Patas y Bigotes</p>
+            </div>
+            <div class="item_flex">
+              <form action="https://formspree.io/f/meoqkbwv" method="POST">
+                <h3>Ponte en contacto con nosotros</h3>
+                <label for="email">Tu Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit">Enviar</button>
             </form>
-          </div>
-          </div>       
-    </footer>
+            </div>
+        </div>
+      </footer>
+    <button id="scrollToTopBtn">&#8679;</button> 
+    <script>
+      // Get the button
+      let mybutton = document.getElementById("scrollToTopBtn");
+    
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {
+        scrollFunction();
+      };
+    
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+    
+      // When the user clicks on the button, scroll to the top of the document
+      mybutton.onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+    </script>
 </body>
 </html>

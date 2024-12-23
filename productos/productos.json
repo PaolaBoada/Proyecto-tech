@@ -1,0 +1,26 @@
+[
+    {
+        "nombre": "Collar para Gatos",
+        "precio": 19.99,
+        "imagen": "./img/Gatoconrayas.jpg",
+        "descripcion": "Descripción de relleno para Producto 1. Segunda línea de descripción."
+    },
+    {
+        "nombre": "Rascador para Gatos",
+        "precio": 29.99,
+        "imagen": "./img/Gatoenrascador.jpg",
+        "descripcion": "Descripción de relleno para Producto 2. Segunda línea de descripción."
+    },
+    {
+        "nombre": "Juguete para Perros",
+        "precio": 39.99,
+        "imagen": "./img/PerroConJuguete.jpg",
+         "descripcion": "Descripción de relleno para Producto 2. Segunda línea de descripción."
+    },
+    {
+        "nombre": "Collar para perros",
+        "precio": 39.99,
+        "imagen": "./img/PerroConJuguete.jpg",
+         "descripcion": "Descripción de relleno para Producto 2. Segunda línea de descripción."
+    }
+]
